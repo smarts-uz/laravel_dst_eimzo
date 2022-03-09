@@ -1,0 +1,24 @@
+{
+    "name": "Teamprodev/eimzo",
+    "license": "CC BY-NC-ND 4.0",
+    "authors": [
+        {
+            "name": "Asadbekinha",
+            "email": "fayzulloevasadbek@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teamprodev\\Eimzo\\Providers\\EimzoServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Teamprodev\\Eimzo\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
