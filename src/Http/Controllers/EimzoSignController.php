@@ -37,11 +37,11 @@ class EimzoSignController extends Controller
                 $old = $document->pkcs;
                 $newPkcs = $this->eimzoService->joinSigns($old,$new);
                 if(!$newPkcs)
-                    return redirect()->route('sign.index')->with('danger', 'Fix Eimzo Service! Error in newPkcs');
+                    return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in newPkcs');
                 $signers = $this->eimzoService->getXML($newPkcs);
 
                 if(!$signers)
-                    return redirect()->route('sign.index')->with('danger', 'Fix Eimzo Service! Error in getting info');
+                    return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in getting info');
 
                 $this->dispatchNow(new EriJoinSignJob($request, $signers, $document, $newPkcs[0]));
 
