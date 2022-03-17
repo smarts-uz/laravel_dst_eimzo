@@ -54,10 +54,10 @@ class EimzoSignController extends Controller
                 $this->dispatchNow(new EriSignJob($request, $signers));
 
             }
-            return redirect()->route(config('redirect_after_sign'))->with('success', 'Signed');
+            return redirect()->route('eimzo.back')->with('success', 'Signed');
         } catch (\Exception $exception) {
             dd($exception);
-            return redirect()->route(config('redirect_after_sign'))->with('danger', 'Something went wrong! Contact developer!');
+            return redirect()->route('eimzo.back')->with('danger', 'Something went wrong! Contact developer!');
         }
 
     }
