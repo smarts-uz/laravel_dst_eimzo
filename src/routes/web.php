@@ -12,5 +12,7 @@ Route::group([
     Route::get('login', [EimzoController::class,'index'])->name('showLogin');
     Route::post('postLogin', [EimzoController::class,'auth'])->name('postLogin');
     Route::get('sign', [EimzoSignController::class, 'index'])->name('sign.index');
-
+    Route::post('verify', [EimzoSignController::class, 'verifyPks'])->name('sign.verify');
+    Route::post('join', [EimzoSignController::class, 'joinTwoPks'])->name('sign.join');
+    Route::get('docs', [EimzoSignController::class, 'docsList'])->name('sign.docs');
 });
