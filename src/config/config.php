@@ -14,6 +14,6 @@ return [
     ],
     'user' => [
         'default_role_id' => env('EIMZO_USER_ROLE_ID', '1')
-    ],
-    'redirect_after_sign' => env('EIMZO_REDIRECT_AFTER_SIGN', '/')
+    ]
+
 ];

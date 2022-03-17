@@ -50,7 +50,7 @@ class EimzoSignController extends Controller
                 $pkcs7[] = $request->pkcs7;
                 $signers = $this->eimzoService->getXML($pkcs7);
                 if(!$signers)
-                    return redirect()->route('sign.index')->with('danger', 'Fix Eimzo Service!');
+                    return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service!');
                 $this->dispatchNow(new EriSignJob($request, $signers));
 
             }
