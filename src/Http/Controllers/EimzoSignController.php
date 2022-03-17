@@ -2,7 +2,7 @@
 
 namespace Teamprodev\Eimzo\Http\Controllers;
 
-use App\Models\SignedDocs;
+use Teamprodev\Eimzo\Models\SignedDocs;
 use Teamprodev\Eimzo\Jobs\EriJoinSignJob;
 use Teamprodev\Eimzo\Jobs\EriSignJob;
 use Teamprodev\Eimzo\Requests\SignRequest;
