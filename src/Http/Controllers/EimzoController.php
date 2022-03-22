@@ -32,6 +32,6 @@ class EimzoController extends Controller
             return redirect()->route(config('eimzo.redirect_url.after_login_error'))->with('error', $errorMessage);
         }
 
-        return redirect()->route(config('eimzo.redirect_url.after_login_success'));
+        return redirect()->route('eimzo.auth.back');
     }
 }
