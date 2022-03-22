@@ -29,9 +29,9 @@ class EimzoController extends Controller
             }
 
             Log::error(sprintf("ERI error: Message: %s, Line: %s, File: %s", $th->getMessage(), $th->getLine(), $th->getFile()));
-            return redirect()->route(config('eimzo.redirect_url.after_login_error'))->with('error', $errorMessage);
+            return redirect()->route('eimzo.auth.back')->with('error', $errorMessage);
         }
 
-        return redirect()->route('eimzo.auth.back');
+        return redirect()->route('eimzo.auth.back')->with('success', 'You are logged in!');
     }
 }
