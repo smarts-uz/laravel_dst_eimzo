@@ -25,8 +25,11 @@ class SignRequest extends FormRequest
     {
         return [
             'pkcs7' => 'required',
-            'data' => 'nullable'
-
+            'data' => 'nullable',
+            'comment' => 'nullable',
+            'status' => 'required',
+            'user_id' => 'required',
+            'application_id' => 'required',
         ];
     }
 }
