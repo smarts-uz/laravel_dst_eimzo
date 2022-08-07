@@ -2,7 +2,7 @@
 
 namespace Teamprodev\Eimzo\Http\Controllers;
 
-use http\Client\Request;
+use Illuminate\Http\Request;
 use Teamprodev\Eimzo\Requests\EriRequest;
 use Teamprodev\Eimzo\Services\AuthLogService;
 use Teamprodev\Eimzo\Services\EriService;
