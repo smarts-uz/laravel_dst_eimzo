@@ -1,6 +1,6 @@
 <?php
 
-namespace Teamprodev\Eimzo\Providers;
+namespace Teamprodev\Eimzo;
 
 use Illuminate\Support\ServiceProvider;
 

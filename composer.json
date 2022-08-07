@@ -11,7 +11,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Teamprodev\\Eimzo\\Providers\\EimzoServiceProvider"
+                "Teamprodev\\Eimzo\\EimzoServiceProvider"
             ]
         }
     },
