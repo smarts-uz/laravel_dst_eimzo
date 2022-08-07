@@ -2,26 +2,25 @@
 
 namespace Teamprodev\Eimzo\Http\Controllers;
 
+use http\Client\Request;
 use Teamprodev\Eimzo\Requests\EriRequest;
 use Teamprodev\Eimzo\Services\AuthLogService;
 use Teamprodev\Eimzo\Services\EriService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class EimzoController extends Controller
 {
-    public function index(){
-        return view("Teamprodev.eimzo.login");
+    public function login()
+    {
+        return view('auth.auth');
     }
-
-    public function auth(EriRequest $request) {
+    public function auth(Request $request)
+    {
         try {
             $oneAuthService = new EriService();
-            $params = $oneAuthService->makeParams($request->validated());
+            $params = $oneAuthService->makeParams($request->toArray());
             $oneAuthService->authorizeUser($params);
-
             AuthLogService::logAuth();
-
         } catch (\Throwable $th) {
             $errorMessage = "Киришда хатолик юз берди, илтимос кейинроқ уруниб кўринг.";
             if(in_array($th->getCode(), [401])) {
@@ -29,9 +28,9 @@ class EimzoController extends Controller
             }
 
             Log::error(sprintf("ERI error: Message: %s, Line: %s, File: %s", $th->getMessage(), $th->getLine(), $th->getFile()));
-            return redirect()->route('eimzo.auth.back')->with('error', $errorMessage);
+            return redirect()->back()->with('danger', 'Something went wrong!');
         }
 
-        return redirect()->route('eimzo.auth.back')->with('success', 'You are logged in!');
+        return redirect()->route('site.applications.index');
     }
 }

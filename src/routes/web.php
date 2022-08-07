@@ -9,7 +9,7 @@ Route::group([
     'as' => 'eimzo.',
     'namespace' => 'Teamprodev\Eimzo\Http\Controllers'
 ], function () {
-    Route::get('login', [EimzoController::class,'index'])->name('showLogin');
+    Route::get('login', [EimzoController::class,'login'])->name('showLogin');
     Route::post('postLogin', [EimzoController::class,'auth'])->name('postLogin');
     Route::get('sign', [EimzoSignController::class, 'index'])->name('sign.index');
     Route::post('verify', [EimzoSignController::class, 'verifyPks'])->name('sign.verify');
