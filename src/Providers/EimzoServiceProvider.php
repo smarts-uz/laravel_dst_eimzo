@@ -19,7 +19,7 @@ class EimzoServiceProvider extends ServiceProvider
 //        $this3->loadViewsFrom(__DIR__.'/views', 'todolist');
         $this->publishes([
             __DIR__ . '/../resources/views' => base_path('resources/views/Teamprodev/eimzo'),
-            __DIR__ . '/../resources/assets' => base_path('public/vendor/assets'),
+            __DIR__ . '/../resources/assets' => base_path('public/vendor/eimzo/assets'),
             __DIR__.'/../config/config.php' => config_path('eimzo.php'),
         ]);
     }
