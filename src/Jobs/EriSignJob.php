@@ -40,9 +40,12 @@ class EriSignJob implements ShouldQueue
     {
         DB::beginTransaction();
         try{
-            $document = new SignedDocs();
+            $document = SignedDocs::where('application_id',$this->request->application_id)->where('role_id', $this->request->role_id)->first();
             $document->pkcs = $this->request->pkcs7;
             $document->text = $this->request->data;
+            $document->comment = $this->request->comment;
+            $document->status = $this->request->status;
+            $document->user_id = auth()->user()->id;
             $data[] = new ImzoData($this->signers['name'], $this->signers['date'], $this->signers['serialNumber'],
                 $this->signers['stir']);
             $document->data = json_encode($data);
