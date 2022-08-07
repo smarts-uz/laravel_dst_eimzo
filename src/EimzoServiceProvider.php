@@ -1,19 +1,36 @@
 <?php
 
-namespace Spatie\GoogleTagManager;
+namespace Teamprodev\Eimzo\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\GoogleTagManager\GoogleTagManager;
 
 class EimzoServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap the application services.
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'eimzo');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+//        $this3->loadViewsFrom(__DIR__.'/views', 'todolist');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => base_path('resources/views/Teamprodev/eimzo'),
+            __DIR__ . '/../resources/assets' => base_path('public/vendor/assets'),
+            __DIR__.'/../config/config.php' => config_path('eimzo.php'),
+        ]);
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../resources/assets/' => public_path('vendor/eimzo/assets'),
-        ], 'public');
+        //
     }
 }
