@@ -2,7 +2,7 @@
 
 namespace Teamprodev\Eimzo\Http\Controllers;
 
-use Teamprodev\Eimzo\Models\SignedDocs;
+use App\Models\SignedDocs;
 use Teamprodev\Eimzo\Jobs\EriJoinSignJob;
 use Teamprodev\Eimzo\Jobs\EriSignJob;
 use Teamprodev\Eimzo\Requests\SignRequest;
@@ -56,13 +56,12 @@ class EimzoSignController extends Controller
                 if(__DIR__ . 'App\Observers\SignDocsObserver' !== null)
                 {
                     $new = new SignDocsObserver();
-                    $find = SignedDocs::find($request->id);
+                    $find = SignedDocs::where('application_id',$request->application_id)->get();
                     $new->updated($find);
                 }
             }
             return redirect()->route('eimzo.back')->with('success', 'Signed');
         } catch (\Exception $exception) {
-            dd($exception);
             return redirect()->route('eimzo.back')->with('danger', 'Something went wrong! Contact developer!');
         }
 
