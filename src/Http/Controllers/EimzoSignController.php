@@ -9,6 +9,7 @@ use Teamprodev\Eimzo\Requests\SignRequest;
 use Teamprodev\Eimzo\Services\EimzoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\Observers\SignDocsObserver;
 
 class EimzoSignController extends Controller
 {
@@ -52,7 +53,12 @@ class EimzoSignController extends Controller
                 if(!$signers)
                     return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service!');
                 $this->dispatchNow(new EriSignJob($request, $signers));
-
+                if(__DIR__ . 'App\Observers\SignDocsObserver' !== null)
+                {
+                    $new = new SignDocsObserver();
+                    $find = SignedDocs::find($request->id);
+                    $new->updated($find);
+                }
             }
             return redirect()->route('eimzo.back')->with('success', 'Signed');
         } catch (\Exception $exception) {
