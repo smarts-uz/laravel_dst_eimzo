@@ -56,8 +56,7 @@ class EimzoSignController extends Controller
                 if(__DIR__ . 'App\Observers\SignDocsObserver' !== null)
                 {
                     $new = new SignDocsObserver();
-                    $find = SignedDocs::where('application_id',$request->application_id)->get();
-                    $new->updated($find);
+                    $new->updated($request->application_id);
                 }
             }
             return redirect()->route('eimzo.back')->with('success', 'Signed');
