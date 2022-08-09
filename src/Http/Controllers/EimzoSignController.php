@@ -29,7 +29,7 @@ class EimzoSignController extends Controller
 
         try {
             $text = $request->data;
-            $document = SignedDocs::where('text', $text)->first();
+            $document = SignedDocs::where('text', $text)->where('role_id',auth()->user()->role_id)->first();
 
 
             if($document){
