@@ -30,24 +30,24 @@ class EimzoSignController extends Controller
 
         try {
             $text = $request->data;
-            $document = SignedDocs::where('text', $text)->where('role_id',auth()->user()->role_id)->first();
+//             $document = SignedDocs::where('text', $text)->where('role_id',auth()->user()->role_id)->first();
 
 
-            if($document){
-                $new = $request->pkcs7;
-                $old = $document->pkcs;
-                $newPkcs = $this->eimzoService->joinSigns($old,$new);
-                if(!$newPkcs)
-                    return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in newPkcs');
-                $signers = $this->eimzoService->getXML($newPkcs);
+//             if($document){
+//                 $new = $request->pkcs7;
+//                 $old = $document->pkcs;
+//                 $newPkcs = $this->eimzoService->joinSigns($old,$new);
+//                 if(!$newPkcs)
+//                     return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in newPkcs');
+//                 $signers = $this->eimzoService->getXML($newPkcs);
 
-                if(!$signers)
-                    return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in getting info');
+//                 if(!$signers)
+//                     return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service! Error in getting info');
 
-                $this->dispatchNow(new EriJoinSignJob($request, $signers, $document, $newPkcs[0]));
+//                 $this->dispatchNow(new EriJoinSignJob($request, $signers, $document, $newPkcs[0]));
 
-            }
-            else {
+//             }
+//             else {
                 $pkcs7[] = $request->pkcs7;
                 $signers = $this->eimzoService->getXML($pkcs7);
                 if(!$signers)
@@ -58,7 +58,7 @@ class EimzoSignController extends Controller
                     $new = new SignDocsObserver();
                     $new->updated($request->application_id);
                 }
-            }
+//             }
             return redirect()->route('eimzo.back')->with('success', 'Signed');
         } catch (\Exception $exception) {
             return redirect()->route('eimzo.back')->with('danger', 'Something went wrong! Contact developer!');
