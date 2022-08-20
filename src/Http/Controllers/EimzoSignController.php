@@ -53,11 +53,6 @@ class EimzoSignController extends Controller
                 if(!$signers)
                     return redirect()->route('eimzo.back')->with('danger', 'Fix Eimzo Service!');
                 $this->dispatchNow(new EriSignJob($request, $signers));
-                if(__DIR__ . 'App\Observers\SignDocsObserver' !== null)
-                {
-                    $new = new SignDocsObserver();
-                    $new->updated($request->application_id);
-                }
             }
             return redirect()->route('eimzo.back')->with('success', 'Signed');
         } catch (\Exception $exception) {

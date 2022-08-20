@@ -3,7 +3,7 @@
 namespace Teamprodev\Eimzo\Jobs;
 
 use Teamprodev\Eimzo\Http\Classes\ImzoData;
-use Teamprodev\Eimzo\Models\SignedDocs;
+use App\Models\SignedDocs;
 use Teamprodev\Eimzo\Requests\SignRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
