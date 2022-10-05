@@ -1,8 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Teamprodev\Eimzo\Http\Controllers\EimzoController;
 use Teamprodev\Eimzo\Http\Controllers\EimzoSignController;
 
+Route::get('/auth/user', function (){
+    return response()->json(['serialNumber' => auth()->user()->username]);
+});
 Route::group([
     'middleware' => 'web',
     'prefix' => 'eimzo',

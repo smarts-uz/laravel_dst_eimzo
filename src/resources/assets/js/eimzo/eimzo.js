@@ -114,20 +114,34 @@
             }
 
             var uiCreateItem = function (itmkey, vo) {
-                var now = new Date();
-                vo.expired = dates.compare(now, vo.validTo) > 0;
-                var itm = document.createElement("option");
-                itm.value = itmkey;
-                itm.text = vo.CN;
-                if (!vo.expired) {
+                var data;
+                $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: '/auth/user',
+                    dataType: 'json',
+                    async: false,
+                    success: function (user) {
+                        data = Object.values(user);
+                    }, error: function () {
+                        console.log('error');
+                    }
+                });
+                if (vo.serialNumber === data[0]) {
+                    var now = new Date();
+                    vo.expired = dates.compare(now, vo.validTo) > 0;
+                    var itm = document.createElement("option");
+                    itm.value = itmkey;
+                    itm.text = vo.CN;
+                    if (!vo.expired) {
 
-                } else {
-                    itm.style.color = 'gray';
-                    itm.text = itm.text + ' (срок истек)';
+                    } else {
+                        itm.style.color = 'gray';
+                        itm.text = itm.text + ' (срок истек)';
+                    }
+                    itm.setAttribute('vo', JSON.stringify(vo));
+                    itm.setAttribute('id', itmkey);
+                    return itm;
                 }
-                itm.setAttribute('vo',JSON.stringify(vo));
-                itm.setAttribute('id',itmkey);
-                return itm;
             }
 
             var wsError = function (e) {
