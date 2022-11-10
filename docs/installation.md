@@ -1,4 +1,4 @@
-##Installing
+## Installing
 
 1.This package publishes a `config/eimzo.php` file. If you already have a file by that name, you must rename or remove it.
 
