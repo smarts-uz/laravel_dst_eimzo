@@ -41,14 +41,14 @@ class EriService {
         );
 
         // NOTIFY OPERATOR ABOUT NEW USER
-        if($user->wasRecentlyCreated) {
-            $message = "<b>Yangi foydalanuvchi tizimda ro'yhatdan o'tdi.</b>\n";
-            $message .= "<b>ERI KEY:</b> " . $user->username . "\n";
-            $message .= "<b>FISh:</b> " . $user->fullname . "\n";
-
-            // #TODO: dispatch async on production
-            NotifyOperatorJob::dispatchSync($message);
-        }
+//        if($user->wasRecentlyCreated) {
+//            $message = "<b>Yangi foydalanuvchi tizimda ro'yhatdan o'tdi.</b>\n";
+//            $message .= "<b>ERI KEY:</b> " . $user->username . "\n";
+//            $message .= "<b>FISh:</b> " . $user->fullname . "\n";
+//
+//            // #TODO: dispatch async on production
+//            NotifyOperatorJob::dispatchSync($message);
+//        }
 
         // CHECK USER STATUS
         // #TODO: middleware to check status of auth user
