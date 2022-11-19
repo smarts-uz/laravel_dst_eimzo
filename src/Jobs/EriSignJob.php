@@ -40,7 +40,7 @@ class EriSignJob implements ShouldQueue
     {
         DB::beginTransaction();
         try{
-            $document = SignedDocs::where('application_id',$this->request->application_id)->where('role_id', $this->request->role_id)->first();
+            $document = SignedDocs::where('application_id',$this->request->application_id)->where('role_id', auth()->user()->role_id)->first();
             $document->pkcs = $this->request->pkcs7;
             $document->text = $this->request->data;
             $document->comment = $this->request->comment;

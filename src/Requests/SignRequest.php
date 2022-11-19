@@ -28,7 +28,7 @@ class SignRequest extends FormRequest
             'data' => 'nullable',
             'comment' => 'nullable',
             'status' => 'required',
-            'user_id' => 'required',
+            'user_id' => 'nullable',
             'application_id' => 'required',
         ];
     }
