@@ -22,8 +22,7 @@ class CreateSignedDocsTable extends Migration
             $table->text('text');
             $table->text('comment');
             $table->text('data');
-            $table->timestamp();
-            $table->nullableTimestamps();
+            $table->timestamps();
         });
     }
 
