@@ -43,6 +43,8 @@
     @include('auth.login')
 
 </div>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script src="{{ asset('assets/js/eimzo/e-imzo.js') }}"></script>
 <script src="{{ asset('assets/js/eimzo/e-imzo-client.js') }}"></script>

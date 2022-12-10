@@ -119,7 +119,18 @@ var uiLoaded = function(){
 }
 
 var uiCreateItem = function (itmkey, vo) {
-    var now = new Date();
+    var now;
+    $.ajax({
+        type: 'GET', //THIS NEEDS TO BE GET
+        url: 'http://worldtimeapi.org/api/timezone/Asia/Tashkent',
+        dataType: 'json',
+        async: false,
+        success: function (value) {
+            now = value.datetime;
+        }, error: function () {
+            console.log('error');
+        }
+    });
     vo.expired = dates.compare(now, vo.validTo) > 0;
     var itm = document.createElement("option");
     itm.value = itmkey;
