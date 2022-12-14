@@ -122,7 +122,7 @@ var uiCreateItem = function (itmkey, vo) {
     var now;
     $.ajax({
         type: 'GET', //THIS NEEDS TO BE GET
-        url: 'http://worldtimeapi.org/api/timezone/Asia/Tashkent',
+        url: 'https://worldtimeapi.org/api/timezone/Asia/Tashkent',
         dataType: 'json',
         async: false,
         success: function (value) {
